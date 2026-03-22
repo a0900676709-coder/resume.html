@@ -3,82 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>個人履歷 - 亞洲大學學生</title>
+<title>個人履歷</title>
 
 <style>
 body{
     margin:0;
-    font-family: "Noto Sans TC", sans-serif;
-    background: linear-gradient(135deg,#f8f9fa,#e3f2fd);
-    color:#333;
+    font-family:"Segoe UI",sans-serif;
+    background:#eaeaea;
 }
 
+/* 主體 */
 .container{
-    max-width:900px;
-    margin:40px auto;
-    background:white;
-    padding:40px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    max-width:1000px;
+    margin:30px auto;
+    display:flex;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
-header{
+/* 左側 */
+.sidebar{
+    width:30%;
+    background:#8d7b6d;
+    color:white;
+    padding:25px;
+}
+
+.sidebar img{
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    display:block;
+    margin:0 auto 15px;
+    border:4px solid #fff;
+}
+
+.sidebar h2{
     text-align:center;
-    margin-bottom:30px;
+    margin:10px 0;
 }
 
-header h1{
-    margin:0;
-    font-size:32px;
+.sidebar p{
+    font-size:13px;
+    color:#eee;
+    text-align:center;
 }
 
-header p{
-    color:#666;
+.sidebar .section{
+    margin-top:25px;
 }
 
-.section{
-    margin-bottom:25px;
-}
-
-.section h2{
-    border-left:5px solid #2196f3;
-    padding-left:10px;
+.sidebar h3{
+    border-bottom:1px solid #ddd;
+    padding-bottom:5px;
     margin-bottom:10px;
 }
 
+.sidebar ul{
+    padding-left:15px;
+    font-size:13px;
+}
+
+/* 右側 */
+.content{
+    width:70%;
+    background:#f7f7f7;
+    padding:30px;
+}
+
+.name{
+    font-size:36px;
+    font-weight:bold;
+    color:#8d7b6d;
+}
+
+.title{
+    color:#777;
+    margin-bottom:20px;
+}
+
+.section{
+    margin-top:20px;
+}
+
+.section h2{
+    border-bottom:2px solid #ccc;
+    padding-bottom:5px;
+    margin-bottom:10px;
+}
+
+ul{
+    padding-left:20px;
+}
+
+li{
+    margin-bottom:8px;
+}
+
+/* 技能條 */
 .skill-bar{
-    background:#eee;
+    background:#ddd;
     border-radius:20px;
     overflow:hidden;
-    margin:8px 0;
+    margin:6px 0;
 }
 
 .skill-level{
-    height:15px;
-    background:#2196f3;
+    height:10px;
+    background:#444;
     width:0;
     transition:1s;
-}
-
-button{
-    padding:10px 20px;
-    border:none;
-    background:#2196f3;
-    color:white;
-    border-radius:20px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-button:hover{
-    background:#0d47a1;
-}
-
-.footer{
-    text-align:center;
-    margin-top:30px;
-    font-size:14px;
-    color:#888;
 }
 </style>
 </head>
@@ -87,78 +120,91 @@ button:hover{
 
 <div class="container">
 
-<header>
+<!-- 左側 -->
+<div class="sidebar">
 
-    <img src="photo.jpg"
-         style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:15px;">
-    
-    <h1>你的姓名</h1>
-    <p>亞洲大學 學生 | 學號：114054015</p>
-</header>
-    
-<div class="section">
-    <h2>個人簡介</h2>
-    <p>
-        我是亞洲大學學生，對設計與創意領域充滿熱情。
-        擅長視覺美感與專案規劃，具備良好的團隊合作能力與學習態度。
-    </p>
-</div>
+    <img src="photo.jpg">
 
-<div class="section">
-    <h2>學歷</h2>
-    <p>亞洲大學 ｜ 就讀中</p>
-</div>
+    <h2>你的姓名</h2>
+    <p>亞洲大學學生</p>
 
-<div class="section">
-    <h2>技能專長</h2>
-
-    <p>HTML</p>
-    <div class="skill-bar">
-        <div class="skill-level" id="html"></div>
+    <div class="section">
+        <h3>聯絡資訊</h3>
+        <p>📍 台中市</p>
+        <p>📞 0912345678</p>
+        <p>📧 your@email.com</p>
     </div>
 
-    <p>CSS</p>
-    <div class="skill-bar">
-        <div class="skill-level" id="css"></div>
+    <div class="section">
+        <h3>專業摘要</h3>
+        <p>
+            對設計與創意領域充滿熱情，
+            具備良好溝通能力與專案執行力，
+            能獨立完成任務並有效解決問題。
+        </p>
     </div>
 
-    <p>JavaScript</p>
-    <div class="skill-bar">
-        <div class="skill-level" id="js"></div>
+    <div class="section">
+        <h3>技能</h3>
+
+        <p>HTML</p>
+        <div class="skill-bar"><div class="skill-level" id="html"></div></div>
+
+        <p>CSS</p>
+        <div class="skill-bar"><div class="skill-level" id="css"></div></div>
+
+        <p>JavaScript</p>
+        <div class="skill-bar"><div class="skill-level" id="js"></div></div>
+    </div>
+
+    <div class="section">
+        <h3>語言</h3>
+        <ul>
+            <li>中文：母語</li>
+            <li>英文：普通</li>
+        </ul>
     </div>
 
 </div>
 
-<div class="section">
-    <h2>專案經驗</h2>
-    <ul>
-        <li>校內設計專題製作</li>
-        <li>品牌企劃與視覺設計專案</li>
-        <li>永續時尚提案發表</li>
-    </ul>
-</div>
+<!-- 右側 -->
+<div class="content">
 
-<div style="text-align:center;">
-    <button onclick="showMessage()">聯絡我</button>
-</div>
+    <div class="name">你的姓名</div>
+    <div class="title">亞洲大學學生｜學號 114054015</div>
 
-<div class="footer">
-    © 2026 亞洲大學學生 114054015
+    <div class="section">
+        <h2>經歷</h2>
+        <ul>
+            <li>校內設計專題製作，負責視覺設計與簡報</li>
+            <li>品牌企劃專案，參與市場分析與策略規劃</li>
+            <li>永續時尚提案發表，團隊合作完成展示</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>學歷</h2>
+        <p>亞洲大學 ｜ 就讀中</p>
+    </div>
+
+    <div class="section">
+        <h2>個人特質</h2>
+        <ul>
+            <li>具備設計美感與創意思維</li>
+            <li>良好溝通能力與團隊合作</li>
+            <li>學習速度快，責任感強</li>
+        </ul>
+    </div>
+
 </div>
 
 </div>
 
 <script>
-// 技能條動畫
 window.onload = function(){
     document.getElementById("html").style.width = "85%";
     document.getElementById("css").style.width = "80%";
     document.getElementById("js").style.width = "70%";
-}
-
-// 按鈕互動
-function showMessage(){
-    alert("感謝您查看我的履歷，期待與您聯繫！");
 }
 </script>
 
