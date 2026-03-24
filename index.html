@@ -38,6 +38,15 @@ body{
     margin-bottom:15px;
 }
 
+.sidebar h2{
+    margin:10px 0 5px;
+}
+
+.sidebar p{
+    font-size:14px;
+    color:#ddd;
+}
+
 .sidebar .block{
     margin-top:25px;
     text-align:left;
@@ -46,6 +55,21 @@ body{
 .sidebar h3{
     border-bottom:1px solid #ccc;
     padding-bottom:5px;
+    margin-bottom:10px;
+}
+
+/* 技能條 */
+.skill-bar{
+    background:#bbb;
+    border-radius:20px;
+    overflow:hidden;
+    margin:8px 0;
+}
+
+.skill-level{
+    height:10px;
+    background:#fff;
+    width:0;
 }
 
 /* 右側 */
@@ -61,60 +85,168 @@ body{
     color:#6d5d53;
 }
 
+.subtitle{
+    color:#777;
+    margin-bottom:20px;
+}
+
+.section{
+    margin-top:25px;
+}
+
+.section h2{
+    border-left:5px solid #6d5d53;
+    padding-left:10px;
+    margin-bottom:10px;
+}
+
+ul{
+    padding-left:20px;
+}
+
+li{
+    margin-bottom:8px;
+}
+
 /* RWD */
 @media (max-width:768px){
-    .container{flex-direction:column;}
-    .sidebar,.content{width:100%;}
+    .container{
+        flex-direction:column;
+        margin:0;
+    }
+
+    .sidebar{
+        width:100%;
+    }
+
+    .content{
+        width:100%;
+        padding:20px;
+    }
+
+    .name{
+        font-size:24px;
+    }
+}
+
+@media (max-width:480px){
+    .name{
+        font-size:20px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 音樂（自動播放） -->
-<audio autoplay loop muted id="bgm">
+<!-- 🎵 背景音樂 -->
+<audio autoplay loop id="bgm">
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container">
 
+<!-- 左側 -->
 <div class="sidebar">
+
     <img src="photo.jpg">
+
     <h2>你的姓名</h2>
+    <p>亞洲大學學生</p>
 
     <div class="block">
         <h3>聯絡資訊</h3>
+        <p>📍 台中市</p>
         <p>📞 0912345678</p>
         <p>📧 your@email.com</p>
     </div>
+
+    <div class="block">
+        <h3>技能</h3>
+
+        <p>HTML</p>
+        <div class="skill-bar"><div class="skill-level" id="html"></div></div>
+
+        <p>CSS</p>
+        <div class="skill-bar"><div class="skill-level" id="css"></div></div>
+
+        <p>JavaScript</p>
+        <div class="skill-bar"><div class="skill-level" id="js"></div></div>
+    </div>
+
+    <div class="block">
+        <h3>語言</h3>
+        <p>中文：母語</p>
+        <p>英文：普通</p>
+    </div>
+
 </div>
 
+<!-- 右側 -->
 <div class="content">
-    <div class="name">你的姓名</div>
 
-    <h2>個人簡介</h2>
-    <p>亞洲大學學生，對設計與創意領域充滿熱情。</p>
+    <div class="name">你的姓名</div>
+    <div class="subtitle">亞洲大學學生 ｜ 學號 114054015</div>
+
+    <div class="section">
+        <h2>個人簡介</h2>
+        <p>
+            我是亞洲大學學生，對設計與創意領域充滿熱情，
+            具備良好的視覺美感與專案規劃能力，
+            能夠與團隊合作並有效完成任務。
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>學歷</h2>
+        <p>亞洲大學 ｜ 就讀中</p>
+    </div>
+
+    <div class="section">
+        <h2>專案經驗</h2>
+        <ul>
+            <li>校內設計專題製作</li>
+            <li>品牌企劃與視覺設計專案</li>
+            <li>永續時尚提案發表</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>個人特質</h2>
+        <ul>
+            <li>具備設計美感與創意思維</li>
+            <li>良好溝通能力與團隊合作</li>
+            <li>學習能力強，責任感高</li>
+        </ul>
+    </div>
+
 </div>
 
 </div>
 
 <script>
-// 一進來先嘗試播放（可能被擋）
-const audio = document.getElementById("bgm");
-audio.play().catch(() => {
-    audio.muted = true;
-    audio.play();
-});
+// 技能條動畫 + 音樂播放處理
+window.onload = function(){
+    document.getElementById("html").style.width = "85%";
+    document.getElementById("css").style.width = "80%";
+    document.getElementById("js").style.width = "70%";
 
-// 🔥 使用者任何操作 → 立即開聲音
-document.addEventListener("mousemove", unlock, {once:true});
-document.addEventListener("click", unlock, {once:true});
-document.addEventListener("scroll", unlock, {once:true});
+    const audio = document.getElementById("bgm");
 
-function unlock(){
+    // 嘗試自動播放（有聲音）
+    audio.play().catch(() => {
+        // 如果被擋 → 靜音播放
+        audio.muted = true;
+        audio.play();
+    });
+}
+
+// 使用者第一次點擊 → 開聲音
+document.addEventListener("click", function(){
+    const audio = document.getElementById("bgm");
     audio.muted = false;
     audio.play();
-}
+}, { once: true });
 </script>
 
 </body>
