@@ -12,6 +12,23 @@ body{
     background:#f0f2f5;
 }
 
+/* 🔥 進入畫面 */
+#enterScreen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#000;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    z-index:9999;
+    cursor:pointer;
+}
+
 /* 外框 */
 .container{
     max-width:1000px;
@@ -38,15 +55,6 @@ body{
     margin-bottom:15px;
 }
 
-.sidebar h2{
-    margin:10px 0 5px;
-}
-
-.sidebar p{
-    font-size:14px;
-    color:#ddd;
-}
-
 .sidebar .block{
     margin-top:25px;
     text-align:left;
@@ -55,7 +63,6 @@ body{
 .sidebar h3{
     border-bottom:1px solid #ccc;
     padding-bottom:5px;
-    margin-bottom:10px;
 }
 
 /* 技能條 */
@@ -87,60 +94,23 @@ body{
 
 .subtitle{
     color:#777;
-    margin-bottom:20px;
-}
-
-.section{
-    margin-top:25px;
-}
-
-.section h2{
-    border-left:5px solid #6d5d53;
-    padding-left:10px;
-    margin-bottom:10px;
-}
-
-ul{
-    padding-left:20px;
-}
-
-li{
-    margin-bottom:8px;
 }
 
 /* RWD */
 @media (max-width:768px){
-    .container{
-        flex-direction:column;
-        margin:0;
-    }
-
-    .sidebar{
-        width:100%;
-    }
-
-    .content{
-        width:100%;
-        padding:20px;
-    }
-
-    .name{
-        font-size:24px;
-    }
-}
-
-@media (max-width:480px){
-    .name{
-        font-size:20px;
-    }
+    .container{flex-direction:column;}
+    .sidebar,.content{width:100%;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 背景音樂 -->
-<audio autoplay loop id="bgm">
+<!-- 🔥 點擊進入 -->
+<div id="enterScreen">點擊進入履歷 🎵</div>
+
+<!-- 🎵 音樂 -->
+<audio id="bgm" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
@@ -188,65 +158,50 @@ li{
     <div class="name">你的姓名</div>
     <div class="subtitle">亞洲大學學生 ｜ 學號 114054015</div>
 
-    <div class="section">
-        <h2>個人簡介</h2>
-        <p>
-            我是亞洲大學學生，對設計與創意領域充滿熱情，
-            具備良好的視覺美感與專案規劃能力，
-            能夠與團隊合作並有效完成任務。
-        </p>
-    </div>
+    <h2>個人簡介</h2>
+    <p>
+        我是亞洲大學學生，對設計與創意領域充滿熱情，
+        具備良好的視覺美感與專案規劃能力，
+        能夠與團隊合作並有效完成任務。
+    </p>
 
-    <div class="section">
-        <h2>學歷</h2>
-        <p>亞洲大學 ｜ 就讀中</p>
-    </div>
+    <h2>學歷</h2>
+    <p>亞洲大學 ｜ 就讀中</p>
 
-    <div class="section">
-        <h2>專案經驗</h2>
-        <ul>
-            <li>校內設計專題製作</li>
-            <li>品牌企劃與視覺設計專案</li>
-            <li>永續時尚提案發表</li>
-        </ul>
-    </div>
+    <h2>專案經驗</h2>
+    <ul>
+        <li>校內設計專題製作</li>
+        <li>品牌企劃與視覺設計專案</li>
+        <li>永續時尚提案發表</li>
+    </ul>
 
-    <div class="section">
-        <h2>個人特質</h2>
-        <ul>
-            <li>具備設計美感與創意思維</li>
-            <li>良好溝通能力與團隊合作</li>
-            <li>學習能力強，責任感高</li>
-        </ul>
-    </div>
+    <h2>個人特質</h2>
+    <ul>
+        <li>具備設計美感與創意思維</li>
+        <li>良好溝通能力與團隊合作</li>
+        <li>學習能力強，責任感高</li>
+    </ul>
 
 </div>
 
 </div>
 
 <script>
-// 技能條動畫 + 音樂播放處理
+// 技能條動畫
 window.onload = function(){
     document.getElementById("html").style.width = "85%";
     document.getElementById("css").style.width = "80%";
     document.getElementById("js").style.width = "70%";
-
-    const audio = document.getElementById("bgm");
-
-    // 嘗試自動播放（有聲音）
-    audio.play().catch(() => {
-        // 如果被擋 → 靜音播放
-        audio.muted = true;
-        audio.play();
-    });
 }
 
-// 使用者第一次點擊 → 開聲音
-document.addEventListener("click", function(){
-    const audio = document.getElementById("bgm");
-    audio.muted = false;
-    audio.play();
-}, { once: true });
+// 點擊進入 → 播放音樂
+const enter = document.getElementById("enterScreen");
+const audio = document.getElementById("bgm");
+
+enter.addEventListener("click", function(){
+    audio.play(); // 🔥 一定有聲音
+    enter.style.display = "none";
+});
 </script>
 
 </body>
