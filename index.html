@@ -108,15 +108,8 @@ li{
     margin-bottom:8px;
 }
 
-/* 音樂 */
-.music{
-    text-align:center;
-    margin:20px 0;
-}
-
-/* 🔥 RWD 手機版 */
+/* RWD */
 @media (max-width:768px){
-
     .container{
         flex-direction:column;
         margin:0;
@@ -124,7 +117,6 @@ li{
 
     .sidebar{
         width:100%;
-        text-align:center;
     }
 
     .content{
@@ -135,32 +127,22 @@ li{
     .name{
         font-size:24px;
     }
-
-    .sidebar img{
-        width:100px;
-        height:100px;
-    }
 }
 
-/* 🔥 更小螢幕 */
 @media (max-width:480px){
-
     .name{
         font-size:20px;
-    }
-
-    .subtitle{
-        font-size:14px;
-    }
-
-    body{
-        font-size:14px;
     }
 }
 </style>
 </head>
 
 <body>
+
+<!-- 🎵 背景音樂 -->
+<audio autoplay loop id="bgm">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <div class="container">
 
@@ -242,19 +224,29 @@ li{
 
 </div>
 
-<!-- 音樂 -->
-<div class="music">
-    <audio controls>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
-</div>
-
 <script>
+// 技能條動畫 + 音樂播放處理
 window.onload = function(){
     document.getElementById("html").style.width = "85%";
     document.getElementById("css").style.width = "80%";
     document.getElementById("js").style.width = "70%";
+
+    const audio = document.getElementById("bgm");
+
+    // 嘗試自動播放（有聲音）
+    audio.play().catch(() => {
+        // 如果被擋 → 靜音播放
+        audio.muted = true;
+        audio.play();
+    });
 }
+
+// 使用者第一次點擊 → 開聲音
+document.addEventListener("click", function(){
+    const audio = document.getElementById("bgm");
+    audio.muted = false;
+    audio.play();
+}, { once: true });
 </script>
 
 </body>
