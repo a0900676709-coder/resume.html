@@ -108,54 +108,10 @@ li{
     margin-bottom:8px;
 }
 
-/* 音樂 */
+/* 音樂播放器置中 */
 .music{
     text-align:center;
     margin:20px 0;
-}
-
-/* 🔥 RWD 手機版 */
-@media (max-width:768px){
-
-    .container{
-        flex-direction:column;
-        margin:0;
-    }
-
-    .sidebar{
-        width:100%;
-        text-align:center;
-    }
-
-    .content{
-        width:100%;
-        padding:20px;
-    }
-
-    .name{
-        font-size:24px;
-    }
-
-    .sidebar img{
-        width:100px;
-        height:100px;
-    }
-}
-
-/* 🔥 更小螢幕 */
-@media (max-width:480px){
-
-    .name{
-        font-size:20px;
-    }
-
-    .subtitle{
-        font-size:14px;
-    }
-
-    body{
-        font-size:14px;
-    }
 }
 </style>
 </head>
@@ -242,10 +198,11 @@ li{
 
 </div>
 
-<!-- 音樂 -->
+<!-- 🎵 音樂播放器 -->
 <div class="music">
     <audio controls>
         <source src="music.mp3" type="audio/mpeg">
+        你的瀏覽器不支援音樂播放
     </audio>
 </div>
 
