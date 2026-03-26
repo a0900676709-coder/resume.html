@@ -9,92 +9,176 @@
 body{
     margin:0;
     font-family:"Noto Sans TC",sans-serif;
-    background:#f0f2f5;
+    background:#f4f6f9;
 }
 
-/* 進入畫面 */
-#enterScreen{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:black;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:28px;
-    cursor:pointer;
-    z-index:9999;
-}
-
-/* 履歷 */
+/* 主框架 */
 .container{
+    display:flex;
     max-width:1000px;
     margin:40px auto;
-    display:flex;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
+/* 左側欄 */
 .sidebar{
     width:30%;
-    background:#6d5d53;
+    background:#2c3e50;
     color:white;
-    padding:20px;
+    padding:30px;
     text-align:center;
 }
 
+.sidebar img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:15px;
+}
+
+.sidebar h2{
+    margin:10px 0;
+}
+
+.sidebar p{
+    font-size:14px;
+    color:#ccc;
+}
+
+.sidebar .section{
+    margin-top:20px;
+    text-align:left;
+}
+
+.sidebar h3{
+    border-bottom:1px solid #aaa;
+    padding-bottom:5px;
+}
+
+/* 右側內容 */
 .content{
     width:70%;
     background:white;
-    padding:20px;
+    padding:30px;
 }
 
-/* RWD */
-@media(max-width:768px){
-    .container{flex-direction:column;}
-    .sidebar,.content{width:100%;}
+.content h2{
+    border-left:5px solid #3498db;
+    padding-left:10px;
+    margin-top:20px;
+}
+
+ul{
+    padding-left:20px;
+}
+
+.skill-bar{
+    background:#eee;
+    border-radius:20px;
+    overflow:hidden;
+    margin:8px 0;
+}
+
+.skill-level{
+    height:12px;
+    background:#3498db;
+    width:0;
+    transition:1s;
+}
+
+button{
+    margin-top:20px;
+    padding:10px 20px;
+    border:none;
+    background:#3498db;
+    color:white;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1f5f8b;
 }
 </style>
 </head>
 
 <body>
 
-<div id="enterScreen">👉 點擊進入（會播放音樂）</div>
-
-<audio id="bgm" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-
 <div class="container">
 
+<!-- 左側 -->
 <div class="sidebar">
-    <img src="photo.jpg" style="width:120px;border-radius:50%;">
+
+    <img src="photo.jpg">
+
     <h2>你的姓名</h2>
+    <p>亞洲大學學生</p>
+    <p>學號：114054015</p>
+
+    <div class="section">
+        <h3>聯絡資訊</h3>
+        <p>📧 your@email.com</p>
+        <p>📞 0912345678</p>
+    </div>
+
+    <div class="section">
+        <h3>技能</h3>
+
+        <p>HTML</p>
+        <div class="skill-bar"><div class="skill-level" id="html"></div></div>
+
+        <p>CSS</p>
+        <div class="skill-bar"><div class="skill-level" id="css"></div></div>
+
+        <p>JavaScript</p>
+        <div class="skill-bar"><div class="skill-level" id="js"></div></div>
+    </div>
+
 </div>
 
+<!-- 右側 -->
 <div class="content">
-    <h1>個人履歷</h1>
-    <p>亞洲大學學生...</p>
+
+    <h2>個人簡介</h2>
+    <p>
+        我是亞洲大學學生，對設計與創意領域充滿熱情，
+        擅長視覺設計與專案規劃，具備良好的團隊合作能力。
+    </p>
+
+    <h2>學歷</h2>
+    <p>亞洲大學 ｜ 就讀中</p>
+
+    <h2>專案經驗</h2>
+    <ul>
+        <li>校內設計專題製作</li>
+        <li>品牌企劃與視覺設計專案</li>
+        <li>永續時尚提案發表</li>
+    </ul>
+
+    <h2>自我優勢</h2>
+    <ul>
+        <li>具備良好設計美感</li>
+        <li>溝通與團隊合作能力佳</li>
+        <li>學習速度快，能獨立完成任務</li>
+    </ul>
+
+    <button onclick="showMessage()">聯絡我</button>
+
 </div>
 
 </div>
 
 <script>
-const enter = document.getElementById("enterScreen");
-const audio = document.getElementById("bgm");
+window.onload = function(){
+    document.getElementById("html").style.width = "85%";
+    document.getElementById("css").style.width = "80%";
+    document.getElementById("js").style.width = "70%";
+}
 
-enter.addEventListener("click", function(){
-    audio.currentTime = 0; // 從頭開始
-    audio.volume = 1;      // 確保有聲音
-    audio.muted = false;
-    
-    audio.play().then(()=>{
-        console.log("播放成功");
-    }).catch((err)=>{
-        console.log("播放失敗", err);
-    });
-
-    enter.style.display = "none";
-});
+function showMessage(){
+    alert("感謝您查看我的履歷！");
+}
 </script>
 
 </body>
