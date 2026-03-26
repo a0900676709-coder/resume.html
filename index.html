@@ -9,21 +9,21 @@
 body{
     margin:0;
     font-family:"Noto Sans TC",sans-serif;
-    background:#f4f6f9;
+    background:#f0f2f5;
 }
 
 /* 主框架 */
 .container{
-    display:flex;
     max-width:1000px;
     margin:40px auto;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    display:flex;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* 左側欄 */
+/* 左側 */
 .sidebar{
     width:30%;
-    background:#2c3e50;
+    background:#6d5d53;
     color:white;
     padding:30px;
     text-align:center;
@@ -34,6 +34,7 @@ body{
     height:120px;
     border-radius:50%;
     object-fit:cover;
+    border:4px solid white;
     margin-bottom:15px;
 }
 
@@ -41,109 +42,61 @@ body{
     margin:10px 0;
 }
 
-.sidebar p{
-    font-size:14px;
-    color:#ccc;
-}
-
-.sidebar .section{
-    margin-top:20px;
-    text-align:left;
-}
-
-.sidebar h3{
-    border-bottom:1px solid #aaa;
-    padding-bottom:5px;
-}
-
-/* 右側內容 */
+/* 右側 */
 .content{
     width:70%;
     background:white;
     padding:30px;
 }
 
-.content h2{
-    border-left:5px solid #3498db;
-    padding-left:10px;
-    margin-top:20px;
+.name{
+    font-size:32px;
+    font-weight:bold;
+    color:#6d5d53;
 }
 
-ul{
-    padding-left:20px;
-}
-
-.skill-bar{
-    background:#eee;
-    border-radius:20px;
-    overflow:hidden;
-    margin:8px 0;
-}
-
-.skill-level{
-    height:12px;
-    background:#3498db;
-    width:0;
-    transition:1s;
-}
-
-button{
-    margin-top:20px;
-    padding:10px 20px;
-    border:none;
-    background:#3498db;
-    color:white;
-    border-radius:20px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#1f5f8b;
+/* RWD */
+@media (max-width:768px){
+    .container{
+        flex-direction:column;
+        margin:0;
+    }
+    .sidebar,.content{
+        width:100%;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- 🎵 背景音樂（無控制按鈕） -->
+<audio autoplay loop muted id="bgm">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <div class="container">
 
 <!-- 左側 -->
 <div class="sidebar">
-
     <img src="photo.jpg">
-
     <h2>你的姓名</h2>
     <p>亞洲大學學生</p>
-    <p>學號：114054015</p>
 
-    <div class="section">
-        <h3>聯絡資訊</h3>
-        <p>📧 your@email.com</p>
-        <p>📞 0912345678</p>
-    </div>
-
-    <div class="section">
-        <h3>技能</h3>
-
-        <p>HTML</p>
-        <div class="skill-bar"><div class="skill-level" id="html"></div></div>
-
-        <p>CSS</p>
-        <div class="skill-bar"><div class="skill-level" id="css"></div></div>
-
-        <p>JavaScript</p>
-        <div class="skill-bar"><div class="skill-level" id="js"></div></div>
-    </div>
-
+    <h3>聯絡資訊</h3>
+    <p>📞 0912345678</p>
+    <p>📧 your@email.com</p>
 </div>
 
 <!-- 右側 -->
 <div class="content">
 
+    <div class="name">你的姓名</div>
+
     <h2>個人簡介</h2>
     <p>
         我是亞洲大學學生，對設計與創意領域充滿熱情，
-        擅長視覺設計與專案規劃，具備良好的團隊合作能力。
+        具備良好的視覺設計與團隊合作能力。
     </p>
 
     <h2>學歷</h2>
@@ -156,29 +109,24 @@ button:hover{
         <li>永續時尚提案發表</li>
     </ul>
 
-    <h2>自我優勢</h2>
-    <ul>
-        <li>具備良好設計美感</li>
-        <li>溝通與團隊合作能力佳</li>
-        <li>學習速度快，能獨立完成任務</li>
-    </ul>
-
-    <button onclick="showMessage()">聯絡我</button>
-
 </div>
 
 </div>
 
 <script>
-window.onload = function(){
-    document.getElementById("html").style.width = "85%";
-    document.getElementById("css").style.width = "80%";
-    document.getElementById("js").style.width = "70%";
-}
+// 🔥 嘗試開聲音（部分瀏覽器會成功）
+const audio = document.getElementById("bgm");
 
-function showMessage(){
-    alert("感謝您查看我的履歷！");
-}
+audio.play().catch(() => {
+    audio.muted = true;
+    audio.play();
+});
+
+// 使用者一有動作 → 立刻有聲音
+document.addEventListener("click", function(){
+    audio.muted = false;
+    audio.play();
+}, { once: true });
 </script>
 
 </body>
