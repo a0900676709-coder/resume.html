@@ -108,8 +108,8 @@ body{
 
 <body>
 
-<!-- 🎵 背景音樂 -->
-<audio autoplay loop muted id="bgm">
+<!-- 🎵 自動播放背景音樂（無控制） -->
+<audio autoplay loop muted>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
@@ -194,11 +194,6 @@ window.onload = function(){
     document.getElementById("css").style.width = "80%";
     document.getElementById("js").style.width = "70%";
 }
-
-// 點擊後開聲音
-const audio = document.getElementById("bgm");
-    audio.play();
-}, { once:true });
 </script>
 
 </body>
