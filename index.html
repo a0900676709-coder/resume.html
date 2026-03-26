@@ -108,11 +108,10 @@ body{
 
 <body>
 
-<!-- 🎵 背景音樂 -->
-<audio autoplay loop muted id="bgm">
+<!-- 🎵 自動播放（無點擊） -->
+<audio autoplay loop muted>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
-
 <div class="container">
 
 <!-- 左側 -->
@@ -195,13 +194,6 @@ window.onload = function(){
     document.getElementById("js").style.width = "70%";
 }
 
-// 點擊後開聲音
-const audio = document.getElementById("bgm");
-document.addEventListener("click", function(){
-    audio.muted = false;
-    audio.play();
-}, { once:true });
-</script>
 
 </body>
 </html>
