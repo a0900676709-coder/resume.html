@@ -86,8 +86,8 @@ body{
 <body>
 
 <!--音樂來源suno,ai-->
-<!-- 🎵 背景音樂（自動播放＋無控制按鈕） -->
-<audio autoplay loop muted>
+<!-- 🎵 背景音樂 -->
+<audio id="bgm" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
@@ -147,6 +147,18 @@ window.onload = function(){
     document.getElementById("css").style.width = "80%";
     document.getElementById("js").style.width = "70%";
 }
+
+// 🎵 嘗試自動播放（可能被擋）
+const audio = document.getElementById("bgm");
+
+audio.play().catch(()=>{});
+
+// 使用者任何動作 → 開聲音
+["click","mousemove","scroll","keydown","touchstart"].forEach(event=>{
+    document.addEventListener(event, ()=>{
+        audio.play();
+    }, {once:true});
+});
 </script>
 
 </body>
