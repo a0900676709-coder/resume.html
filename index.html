@@ -93,7 +93,7 @@ body{
     padding-left:10px;
 }
 
-/* RWD */
+/* RWD 響應式 */
 @media (max-width:768px){
     .container{
         flex-direction:column;
@@ -107,8 +107,10 @@ body{
 </head>
 
 <body>
-<!-- 🎵 自動播放 -->
-<audio autoplay loop muted>
+
+<!--音樂來源suno,ai-->
+<!-- 🎵 背景音樂（自動播放＋無播放按鈕） -->
+<audio autoplay loop muted id="bgm">
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
@@ -193,7 +195,6 @@ window.onload = function(){
     document.getElementById("css").style.width = "80%";
     document.getElementById("js").style.width = "70%";
 }
-
 </script>
 
 </body>
