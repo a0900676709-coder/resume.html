@@ -116,7 +116,6 @@ body{
     <p>亞洲大學學生</p>
 
     <h3>聯絡資訊</h3>
-    <p>📞 0912345678</p>
     <p>📧 your@email.com</p>
 
     <h3>技能</h3>
@@ -130,6 +129,10 @@ body{
     <p>JavaScript</p>
     <div class="skill-bar"><div class="skill-level" id="js"></div></div>
 
+    <h3>語言</h3>
+    <p>中文：母語</p>
+    <p>英文：普通</p>
+
 </div>
 
 <!-- 右側 -->
@@ -140,7 +143,11 @@ body{
 
     <div class="section">
         <h2>個人簡介</h2>
-        <p>對設計與創意領域充滿熱情，具備良好團隊合作能力。</p>
+        <p>
+            我是亞洲大學學生，對設計與創意領域充滿熱情，
+            擅長視覺設計與專案規劃，具備良好的團隊合作能力，
+            並能快速學習新技術與解決問題。
+        </p>
     </div>
 
     <div class="section">
@@ -151,8 +158,27 @@ body{
     <div class="section">
         <h2>專案經驗</h2>
         <ul>
-            <li>校內設計專題製作</li>
+            <li>校內設計專題製作（負責UI設計與簡報）</li>
             <li>品牌企劃與視覺設計專案</li>
+            <li>永續時尚提案發表</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>技能專長</h2>
+        <ul>
+            <li>網頁設計：HTML / CSS / JavaScript</li>
+            <li>視覺設計與排版</li>
+            <li>簡報製作與專案規劃</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>自我優勢</h2>
+        <ul>
+            <li>具備設計美感與創意思維</li>
+            <li>良好溝通能力與團隊合作</li>
+            <li>學習能力強，責任感高</li>
         </ul>
     </div>
 
@@ -168,15 +194,11 @@ window.onload = function(){
     document.getElementById("js").style.width = "70%";
 }
 
-// 🔊 自動播放破解（關鍵）
+// 音樂播放處理
 const audio = document.getElementById("bgm");
 
-// 先嘗試播放
-audio.play().then(()=>{
-    audio.muted = false;
-}).catch(()=>{});
+audio.play().catch(()=>{});
 
-// 使用者互動後開聲音（保險）
 ["click","mousemove","scroll","keydown","touchstart"].forEach(event=>{
     document.addEventListener(event, ()=>{
         audio.muted = false;
